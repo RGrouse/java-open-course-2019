@@ -7,4 +7,4 @@ script:
   - ./gradlew clean build
 
 after_failure:
-  - cat file:///home/travis/build/RGrouse/java-open-course-2019/build/reports/tests/test/index.html
+  - cat /home/travis/build/RGrouse/java-open-course-2019/build/reports/tests/test/index.html
