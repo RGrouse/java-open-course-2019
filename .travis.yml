@@ -8,5 +8,6 @@ script:
 
 after_failure:
   - echo $LANG
+  - ls -AR ./ | grep result
   - cat ./src/test/java/ru/mail/polis/open/task9/test_expected_result
   - cat ./src/test/java/ru/mail/polis/open/task9/test_real_result

@@ -49,4 +49,27 @@ public class RssToFileSaver {
             }
         }
     }
+
+    public String getText(@NotNull URL feedSource) throws FeedException, IOException {
+        SyndFeed feed = feedBuilder.build(new XmlReader(feedSource));
+        StringBuilder sb = new StringBuilder();
+
+
+        for (SyndEntry entry : feed.getEntries()) {
+            sb.append(entry.getTitle());
+            sb.append(lineSeparator);
+
+            sb.append(entry.getDescription().getValue());
+            sb.append(lineSeparator);
+
+            sb.append(entry.getLink());
+            sb.append(lineSeparator);
+
+            sb.append(dateFormat.format(entry.getPublishedDate()));
+            sb.append(lineSeparator);
+            sb.append(lineSeparator);
+        }
+        return sb.toString();
+
+    }
 }

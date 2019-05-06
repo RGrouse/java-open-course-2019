@@ -34,7 +34,7 @@ class RssToFileSaverTest {
             Path expectedFilePath = basePath.resolve("test_expected_result");
             Path resultFilePath = basePath.resolve("test_real_result");
 
-            rssToFileSaver.saveToFile(inputFileUrl, expectedFilePath.toAbsolutePath().toString());
+            rssToFileSaver.saveToFile(inputFileUrl, resultFilePath.toAbsolutePath().toString());
 
             try (InputStream expected = new FileInputStream(expectedFilePath.toFile());
                     InputStream real = new FileInputStream(resultFilePath.toFile())) {
@@ -50,6 +50,37 @@ class RssToFileSaverTest {
                     fail("что-то не так со строками");
                 }
 
+                assertTrue(s1.equals(s2));
+            }
+        } catch (IOException | FeedException e) {
+            fail(e);
+        }
+    }
+
+    @Test
+    void textToFileTest() {
+        try {
+            Path basePath =
+                    Paths.get("src", "test", "java", "ru", "mail", "polis", "open", "task9");
+
+            Path inputFilePath = basePath.resolve("test_input");
+
+            URL inputFileUrl = inputFilePath.toUri().toURL();
+
+            Path expectedFilePath = basePath.resolve("test_expected_result");
+
+            String s2 = rssToFileSaver.getText(inputFileUrl);
+
+            try (InputStream expected = new FileInputStream(expectedFilePath.toFile())) {
+
+                String s1 = new String(expected.readAllBytes(), "UTF-8");
+
+                if (s1.length() < 10 || s2.length() < 10) {
+                    fail("что-то не так со строками");
+                }
+                System.out.println(s1);
+                System.out.println();
+                System.out.println(s2);
                 assertTrue(s1.equals(s2));
             }
         } catch (IOException | FeedException e) {
