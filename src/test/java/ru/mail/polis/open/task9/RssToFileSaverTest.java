@@ -34,10 +34,15 @@ class RssToFileSaverTest {
             Path expectedFilePath = basePath.resolve("test_expected_result");
             Path resultFilePath = basePath.resolve("test_real_result");
 
+            Path s1f = basePath.resolve("s1f");
+            Path s2f = basePath.resolve("s2f");
+
             rssToFileSaver.saveToFile(inputFileUrl, resultFilePath.toAbsolutePath().toString());
 
             try (InputStream expected = new FileInputStream(expectedFilePath.toFile());
-                    InputStream real = new FileInputStream(resultFilePath.toFile())) {
+                    InputStream real = new FileInputStream(resultFilePath.toFile());
+                    InputStream s1fs = new FileInputStream(s1f.toFile());
+                    InputStream s2fs = new FileInputStream(s2f.toFile());) {
 
                 if (!resultFilePath.toFile().exists() || !expectedFilePath.toFile().exists()) {
                     fail("файл не существует");
