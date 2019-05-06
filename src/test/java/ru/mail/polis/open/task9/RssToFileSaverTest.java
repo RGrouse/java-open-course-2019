@@ -34,7 +34,7 @@ class RssToFileSaverTest {
             Path expectedFilePath = basePath.resolve("test_expected_result");
             Path resultFilePath = basePath.resolve("test_real_result");
 
-            rssToFileSaver.saveToFile(inputFileUrl, resultFilePath.toAbsolutePath().toString());
+            rssToFileSaver.saveToFile(inputFileUrl, expectedFilePath.toAbsolutePath().toString());
 
             try (InputStream expected = new FileInputStream(expectedFilePath.toFile());
                     InputStream real = new FileInputStream(resultFilePath.toFile())) {

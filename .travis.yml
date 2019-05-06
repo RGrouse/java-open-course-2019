@@ -7,5 +7,6 @@ script:
   - ./gradlew clean build
 
 after_failure:
+  - echo $LANG
   - cat ./src/test/java/ru/mail/polis/open/task9/test_expected_result
   - cat ./src/test/java/ru/mail/polis/open/task9/test_real_result
