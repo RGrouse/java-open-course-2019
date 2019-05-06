@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import com.rometools.rome.io.FeedException;
@@ -17,7 +18,7 @@ class RssToFileSaverTest {
 
     @BeforeAll
     static void init() {
-        String lineSeparator = "-------";
+        String lineSeparator = "\n";
         rssToFileSaver = new RssToFileSaver(lineSeparator, "dd-MM-yyyy HH:mm:ss", "UTF-8");
     }
 
@@ -37,51 +38,8 @@ class RssToFileSaverTest {
             rssToFileSaver.saveToFile(inputFileUrl, resultFilePath.toAbsolutePath().toString());
 
             try (InputStream expected = new FileInputStream(expectedFilePath.toFile());
-                    InputStream real = new FileInputStream(resultFilePath.toFile());) {
-
-                if (!resultFilePath.toFile().exists() || !expectedFilePath.toFile().exists()) {
-                    fail("файл не существует");
-                }
-
-                String s1 = new String(expected.readAllBytes(), "UTF-8");
-                String s2 = new String(real.readAllBytes(), "UTF-8");
-
-                if (s1.length() < 10 || s2.length() < 10) {
-                    fail("что-то не так со строками");
-                }
-
-                assertTrue(s1.equals(s2));
-            }
-        } catch (IOException | FeedException e) {
-            fail(e);
-        }
-    }
-
-    @Test
-    void textToFileTest() {
-        try {
-            Path basePath =
-                    Paths.get("src", "test", "java", "ru", "mail", "polis", "open", "task9");
-
-            Path inputFilePath = basePath.resolve("test_input");
-
-            URL inputFileUrl = inputFilePath.toUri().toURL();
-
-            Path expectedFilePath = basePath.resolve("test_expected_result");
-
-            String s2 = rssToFileSaver.getText(inputFileUrl);
-
-            try (InputStream expected = new FileInputStream(expectedFilePath.toFile())) {
-
-                String s1 = new String(expected.readAllBytes(), "UTF-8");
-
-                if (s1.length() < 10 || s2.length() < 10) {
-                    fail("что-то не так со строками");
-                }
-                System.out.println(s1);
-                System.out.println();
-                System.out.println(s2);
-                assertTrue(s1.equals(s2));
+                    InputStream real = new FileInputStream(resultFilePath.toFile())) {
+                assertTrue(Arrays.equals(expected.readAllBytes(), real.readAllBytes()));
             }
         } catch (IOException | FeedException e) {
             fail(e);
