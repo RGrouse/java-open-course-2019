@@ -46,6 +46,7 @@ public class RssToFileSaver {
                 fileOut.write(lineSeparator.getBytes(charset));
 
                 fileOut.write(dateFormat.format(entry.getPublishedDate()).getBytes(charset));
+
                 fileOut.write(lineSeparator.getBytes(charset));
                 fileOut.write(lineSeparator.getBytes(charset));
             }
