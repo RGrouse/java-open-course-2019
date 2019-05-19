@@ -9,8 +9,8 @@ public class Ball extends MoveableRectangle {
     private int speedX;
     private int speedY;
 
-    public Ball(Point mainPoint, int diameter, int xSpeed, int ySpeed) {
-        this(mainPoint, diameter, xSpeed, ySpeed, Color.WHITE);
+    public Ball(Point mainPoint, int diameter, int speedX, int speedY) {
+        this(mainPoint, diameter, speedX, speedY, Color.WHITE);
     }
 
     public Ball(Point mainPoint, int diameter, int speedX, int speedY, Color color) {

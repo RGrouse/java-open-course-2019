@@ -14,7 +14,8 @@ import ru.mail.polis.open.taskfinal.entities.BallSnapshot;
 import ru.mail.polis.open.taskfinal.entities.PaddleSnapshot;
 
 class MainPanel extends JPanel {
-    private PaddleSnapshot mpCachedState, spCachedState;
+    private PaddleSnapshot mpCachedState;
+    private PaddleSnapshot spCachedState;
     private BallSnapshot ballCachedState;
 
     private Color filler;

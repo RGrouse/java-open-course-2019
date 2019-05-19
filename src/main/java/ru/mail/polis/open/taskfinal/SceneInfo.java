@@ -11,7 +11,8 @@ public class SceneInfo {
     static int WINDOW_HEIGHT;
 
     private ActionProcessor actionProcessor;
-    private Paddle masterPaddle, slavePaddle;
+    private Paddle masterPaddle;
+    private Paddle slavePaddle;
     private Ball ball;
 
     public SceneInfo(ActionProcessor actionProcessor, Paddle masterPaddle, Paddle slavePaddle,
