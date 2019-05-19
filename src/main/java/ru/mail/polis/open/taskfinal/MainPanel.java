@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
@@ -51,12 +52,33 @@ class MainPanel extends JPanel {
 
         if (!mpCachedState.equals(mpCurrentState) || !spCachedState.equals(spCurrentState)
                 || !ballCachedState.equals(ballCurrentState)) {
+            clearSceneFrame();
             this.mpCachedState = mpCurrentState;
             this.spCachedState = spCurrentState;
             this.ballCachedState = ballCurrentState;
-
-            repaint();
+            paintScene();
+            // repaint();
         }
+    }
+
+    private void clearSceneFrame() {
+        repaint(mpCachedState.getX(), mpCachedState.getY(), mpCachedState.getWidth(),
+                mpCachedState.getHeight());
+        repaint(spCachedState.getX(), spCachedState.getY(), spCachedState.getWidth(),
+                spCachedState.getHeight());
+        repaint(ballCachedState.getX(), ballCachedState.getY(), ballCachedState.getDiameter(),
+                ballCachedState.getDiameter());
+    }
+
+    private void paintScene() {
+        repaint(mpCachedState.getX(), mpCachedState.getY(), mpCachedState.getWidth(),
+                mpCachedState.getHeight());
+        repaint(spCachedState.getX(), spCachedState.getY(), spCachedState.getWidth(),
+                spCachedState.getHeight());
+        repaint(ballCachedState.getX(), ballCachedState.getY(), ballCachedState.getDiameter(),
+                ballCachedState.getDiameter());
+
+        Toolkit.getDefaultToolkit().sync();
     }
 
     @Override
