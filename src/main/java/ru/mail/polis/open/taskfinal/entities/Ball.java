@@ -30,16 +30,16 @@ public class Ball extends MoveableRectangle {
         return speedX;
     }
 
-    public void setxSpeed(int xSpeed) {
-        this.speedX = xSpeed;
+    public void setxSpeed(int speedX) {
+        this.speedX = speedX;
     }
 
     public int getySpeed() {
         return speedY;
     }
 
-    public void setySpeed(int ySpeed) {
-        this.speedY = ySpeed;
+    public void setySpeed(int speedY) {
+        this.speedY = speedY;
     }
 
     public BallSnapshot getSnapshot() {

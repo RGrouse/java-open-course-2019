@@ -9,7 +9,7 @@ public class MoveableRectangle extends Rectangle {
     private Point defaultPosition;
     private Color color;
 
-    MoveableRectangle(Point mainPoint, int width, int height, Color color) {
+    public MoveableRectangle(Point mainPoint, int width, int height, Color color) {
         super(mainPoint, new Dimension(width, height));
         this.defaultPosition = mainPoint;
         this.color = color;
