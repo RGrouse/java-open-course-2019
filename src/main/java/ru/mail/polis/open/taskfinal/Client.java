@@ -41,7 +41,7 @@ class Client {
         DatagramPacket sendPacket = new DatagramPacket(bb.array(), bb.limit(), address, 6666);
         clientSocket.send(sendPacket);
 
-        ByteBuffer bbResponce = ByteBuffer.allocate(24);
+        ByteBuffer bbResponce = ByteBuffer.allocate(32);
         IntBuffer wrappedBb = bbResponce.asIntBuffer();
 
         DatagramPacket receivePacket = new DatagramPacket(bbResponce.array(), bbResponce.limit());
@@ -51,8 +51,13 @@ class Client {
         Point slavePaddlePoint = new Point(wrappedBb.get(), wrappedBb.get());
         Point ballPoint = new Point(wrappedBb.get(), wrappedBb.get());
 
+        int masterScore = wrappedBb.get();
+        int slaveScore = wrappedBb.get();
+
         sceneInfo.changeMasterPaddleLocation(masterPaddlePoint);
+        sceneInfo.changeMasterPaddleScore(masterScore);
         sceneInfo.changeSlavePaddleLocation(slavePaddlePoint);
+        sceneInfo.changeSlavePaddleScore(slaveScore);
         sceneInfo.changeBallLocation(ballPoint);
     }
 

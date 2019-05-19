@@ -23,7 +23,6 @@ public class SceneInfo {
         this.ball = ball;
     }
 
-    // todo sync
     public void updateSceneInfo(UsersActionHolder usersActionHolder) {
         if (usersActionHolder.isThereAnyUsersActions()) {
             actionProcessor.updatePaddle(masterPaddle, usersActionHolder.getMasterActions());
@@ -42,6 +41,14 @@ public class SceneInfo {
 
     public void changeBallLocation(Point newLocation) {
         ball.setLocation(newLocation);
+    }
+
+    public void changeMasterPaddleScore(int score) {
+        masterPaddle.setScore(score);
+    }
+
+    public void changeSlavePaddleScore(int score) {
+        slavePaddle.setScore(score);
     }
 
     public PaddleSnapshot getMasterPaddleSnapshot() {

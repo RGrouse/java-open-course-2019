@@ -18,6 +18,10 @@ public class Paddle extends MoveableRectangle {
         this.score++;
     }
 
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public PaddleSnapshot getSnapshot() {
         return new PaddleSnapshot(x, y, width, height, score, getColor());
     }

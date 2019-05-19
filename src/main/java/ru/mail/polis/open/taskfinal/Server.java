@@ -40,7 +40,7 @@ public class Server {
         InetAddress IPAddress = receivePacket.getAddress();
         int port = receivePacket.getPort();
 
-        ByteBuffer buffer = ByteBuffer.allocate(24);
+        ByteBuffer buffer = ByteBuffer.allocate(32);
 
         PaddleSnapshot mps = sceneInfo.getMasterPaddleSnapshot();
         PaddleSnapshot sps = sceneInfo.getSlavePaddleSnapshot();
@@ -54,6 +54,9 @@ public class Server {
 
         buffer.putInt(bs.getX());
         buffer.putInt(bs.getY());
+
+        buffer.putInt(mps.getScore());
+        buffer.putInt(sps.getScore());
 
         DatagramPacket sendPacket =
                 new DatagramPacket(buffer.array(), buffer.limit(), IPAddress, port);
