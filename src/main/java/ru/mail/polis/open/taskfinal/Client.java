@@ -1,4 +1,4 @@
-package ru.mail.polis.open.taskFinal;
+package ru.mail.polis.open.taskfinal;
 
 import java.awt.Point;
 import java.io.IOException;
@@ -20,12 +20,12 @@ class Client {
 
     private HostActionHolder hostActionHolder;
 
-    Client(SceneInfo sceneInfo, HostActionHolder hostActionHolder)
+    Client(SceneInfo sceneInfo, HostActionHolder hostActionHolder, InetAddress address)
             throws SocketException, UnknownHostException {
         this.sceneInfo = sceneInfo;
         this.hostActionHolder = hostActionHolder;
+        this.address = address;
         clientSocket = new DatagramSocket();
-        address = InetAddress.getByName("localhost");
         receiveData = new byte[1024];
     }
 

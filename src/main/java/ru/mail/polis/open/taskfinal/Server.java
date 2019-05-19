@@ -1,4 +1,4 @@
-package ru.mail.polis.open.taskFinal;
+package ru.mail.polis.open.taskfinal;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -7,6 +7,8 @@ import java.net.InetAddress;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
+import ru.mail.polis.open.taskfinal.Entities.BallSnapshot;
+import ru.mail.polis.open.taskfinal.Entities.PaddleSnapshot;
 
 public class Server {
     private SceneInfo sceneInfo;

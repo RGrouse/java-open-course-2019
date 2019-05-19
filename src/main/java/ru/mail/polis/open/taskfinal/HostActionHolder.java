@@ -1,4 +1,4 @@
-package ru.mail.polis.open.taskFinal;
+package ru.mail.polis.open.taskfinal;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

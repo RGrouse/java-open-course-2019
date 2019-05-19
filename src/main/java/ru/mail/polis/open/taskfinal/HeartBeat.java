@@ -1,6 +1,7 @@
-package ru.mail.polis.open.taskFinal;
+package ru.mail.polis.open.taskfinal;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.List;
 
 public class HeartBeat {
@@ -52,7 +53,8 @@ public class HeartBeat {
         Runnable r = () -> {
             Client client = null;
             try {
-                client = new Client(sceneInfo, hostActionHolder);
+                client = new Client(sceneInfo, hostActionHolder,
+                        InetAddress.getByName("localhost"));
 
                 while (goOn) {
                     client.sendActions();

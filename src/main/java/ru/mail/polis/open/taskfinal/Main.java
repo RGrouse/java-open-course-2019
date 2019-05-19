@@ -1,4 +1,4 @@
-package ru.mail.polis.open.taskFinal;
+package ru.mail.polis.open.taskfinal;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,7 +16,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-import ru.mail.polis.open.taskFinal.HeartBeat.Role;
+import ru.mail.polis.open.taskfinal.HeartBeat.Role;
+import ru.mail.polis.open.taskfinal.Entities.Ball;
+import ru.mail.polis.open.taskfinal.Entities.BallSnapshot;
+import ru.mail.polis.open.taskfinal.Entities.Paddle;
+import ru.mail.polis.open.taskfinal.Entities.PaddleSnapshot;
 
 class Main {
     private static final int PADDLE_WIDTH = 100;
@@ -31,7 +35,7 @@ class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                createAndShowGUI(Role.Master);
+                createAndShowGUI(Role.Slave);
             }
         });
     }
@@ -76,25 +80,25 @@ class Main {
         SceneInfo.WINDOW_WIDTH = WINDOW_WIDTH;
         SceneInfo.WINDOW_HEIGHT = WINDOW_HEIGHT;
 
-        int window_x_centre = SceneInfo.WINDOW_WIDTH / 2;
-        int window_y_centre = SceneInfo.WINDOW_HEIGHT / 2;
+        int windowHorizontalCentre = SceneInfo.WINDOW_WIDTH / 2;
+        int windowVerticalCentre = SceneInfo.WINDOW_HEIGHT / 2;
 
-        int x_paddle_master = window_x_centre - PADDLE_WIDTH / 2;
-        int y_paddle_master = PADDLE_VERTICAL_INDENT;
+        int paddleMasterX = windowHorizontalCentre - PADDLE_WIDTH / 2;
+        int paddleMasterY = PADDLE_VERTICAL_INDENT;
 
-        int x_paddle_slave = window_x_centre - PADDLE_WIDTH / 2;
-        int y_paddle_slave = SceneInfo.WINDOW_HEIGHT - PADDLE_HEIGHT - PADDLE_VERTICAL_INDENT;
+        int paddleSlaveX = windowHorizontalCentre - PADDLE_WIDTH / 2;
+        int paddleSlaveY = SceneInfo.WINDOW_HEIGHT - PADDLE_HEIGHT - PADDLE_VERTICAL_INDENT;
 
-        int x_ball = window_x_centre - BALL_DIAMETER / 2;
-        int y_ball = window_y_centre - BALL_DIAMETER / 2;
+        int ballX = windowHorizontalCentre - BALL_DIAMETER / 2;
+        int ballY = windowVerticalCentre - BALL_DIAMETER / 2;
 
-        Paddle master_paddle = new Paddle(new Point(x_paddle_master, y_paddle_master), PADDLE_WIDTH,
-                PADDLE_HEIGHT);
-        Paddle slave_paddle =
-                new Paddle(new Point(x_paddle_slave, y_paddle_slave), PADDLE_WIDTH, PADDLE_HEIGHT);
-        Ball ball = new Ball(new Point(x_ball, y_ball), BALL_DIAMETER, BALL_X_SPEED, BALL_Y_SPEED);
+        Paddle masterPaddle =
+                new Paddle(new Point(paddleMasterX, paddleMasterY), PADDLE_WIDTH, PADDLE_HEIGHT);
+        Paddle slavePaddle =
+                new Paddle(new Point(paddleSlaveX, paddleSlaveY), PADDLE_WIDTH, PADDLE_HEIGHT);
+        Ball ball = new Ball(new Point(ballX, ballY), BALL_DIAMETER, BALL_X_SPEED, BALL_Y_SPEED);
 
-        return new SceneInfo(actionProcessor, master_paddle, slave_paddle, ball);
+        return new SceneInfo(actionProcessor, masterPaddle, slavePaddle, ball);
     }
 }
 
@@ -118,9 +122,9 @@ class MainPanel extends JPanel {
         ballCachedState = sceneInfo.getBallSnapshot();
 
         filler = Color.red;
-        textFont = new Font("Monaco", Font.PLAIN, 20);
+        textFont = new Font("Monaco", Font.PLAIN, 15);
 
-        final Timer timer = new Timer(15, new ActionListener() {
+        final Timer timer = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 repaintIfNeeded();

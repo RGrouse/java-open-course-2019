@@ -1,24 +1,24 @@
-package ru.mail.polis.open.taskFinal;
+package ru.mail.polis.open.taskfinal;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class UsersActionHolder {
-    private LinkedBlockingDeque<Integer> master_actions;
-    private LinkedBlockingDeque<Integer> slave_actions;
+    private LinkedBlockingDeque<Integer> masterActions;
+    private LinkedBlockingDeque<Integer> slaveActions;
 
     public UsersActionHolder() {
-        master_actions = new LinkedBlockingDeque<>();
-        slave_actions = new LinkedBlockingDeque<>();
+        masterActions = new LinkedBlockingDeque<>();
+        slaveActions = new LinkedBlockingDeque<>();
     }
 
     public List<Integer> getMasterActions() {
         List<Integer> listOfActions = new ArrayList<Integer>();
-        if (!master_actions.isEmpty()) {
-            int size = master_actions.size();
+        if (!masterActions.isEmpty()) {
+            int size = masterActions.size();
             for (int i = 0; i < size; i++) {
-                listOfActions.add(master_actions.pollFirst());
+                listOfActions.add(masterActions.pollFirst());
             }
         }
         return listOfActions;
@@ -26,24 +26,24 @@ public class UsersActionHolder {
 
     public List<Integer> getSlaveActions() {
         List<Integer> listOfActions = new ArrayList<Integer>();
-        if (!slave_actions.isEmpty()) {
-            int size = slave_actions.size();
+        if (!slaveActions.isEmpty()) {
+            int size = slaveActions.size();
             for (int i = 0; i < size; i++) {
-                listOfActions.add(slave_actions.pollFirst());
+                listOfActions.add(slaveActions.pollFirst());
             }
         }
         return listOfActions;
     }
 
     public void addMasterActions(List<Integer> actions) {
-        master_actions.addAll(actions);
+        masterActions.addAll(actions);
     }
 
     public void addSlaveActions(List<Integer> actions) {
-        slave_actions.addAll(actions);
+        slaveActions.addAll(actions);
     }
 
     public boolean isThereAnyUsersActions() {
-        return !master_actions.isEmpty() || !slave_actions.isEmpty();
+        return !masterActions.isEmpty() || !slaveActions.isEmpty();
     }
 }
