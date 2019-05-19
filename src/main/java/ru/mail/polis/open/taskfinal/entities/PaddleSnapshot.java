@@ -1,9 +1,13 @@
-package ru.mail.polis.open.taskfinal.Entities;
+package ru.mail.polis.open.taskfinal.entities;
 
 import java.awt.Color;
 
 public class PaddleSnapshot {
-    private int x, y, width, height, score;
+    private int x;
+    private int y;
+    private int width;
+    private int height;
+    private int score;
     private Color color;
 
     public PaddleSnapshot(int x, int y, int width, int height, int score, Color color) {

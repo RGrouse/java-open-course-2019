@@ -1,9 +1,11 @@
-package ru.mail.polis.open.taskfinal.Entities;
+package ru.mail.polis.open.taskfinal.entities;
 
 import java.awt.Color;
 
 public class BallSnapshot {
-    private int x, y, diameter;
+    private int x;
+    private int y;
+    private int diameter;
     private Color color;
 
     public BallSnapshot(int x, int y, int diameter, Color color) {

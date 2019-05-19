@@ -1,4 +1,4 @@
-package ru.mail.polis.open.taskfinal.Entities;
+package ru.mail.polis.open.taskfinal.entities;
 
 import java.awt.Color;
 import java.awt.Point;

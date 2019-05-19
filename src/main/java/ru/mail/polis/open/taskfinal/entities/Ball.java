@@ -1,43 +1,45 @@
-package ru.mail.polis.open.taskfinal.Entities;
+package ru.mail.polis.open.taskfinal.entities;
 
 import java.awt.Color;
 import java.awt.Point;
 
 public class Ball extends MoveableRectangle {
-    private int defXSpeed, defYSpeed;
-    private int xSpeed, ySpeed;
+    private int defSpeedX;
+    private int defSpeedY;
+    private int speedX;
+    private int speedY;
 
     public Ball(Point mainPoint, int diameter, int xSpeed, int ySpeed) {
         this(mainPoint, diameter, xSpeed, ySpeed, Color.WHITE);
     }
 
-    public Ball(Point mainPoint, int diameter, int xSpeed, int ySpeed, Color color) {
+    public Ball(Point mainPoint, int diameter, int speedX, int speedY, Color color) {
         super(mainPoint, diameter, diameter, color);
-        defXSpeed = xSpeed;
-        defYSpeed = ySpeed;
-        this.xSpeed = xSpeed;
-        this.ySpeed = ySpeed;
+        defSpeedX = speedX;
+        defSpeedY = speedY;
+        this.speedX = speedX;
+        this.speedY = speedY;
     }
 
     public void resetSpeed() {
-        xSpeed = defXSpeed;
-        ySpeed = defYSpeed;
+        speedX = defSpeedX;
+        speedY = defSpeedY;
     }
 
     public int getxSpeed() {
-        return xSpeed;
+        return speedX;
     }
 
     public void setxSpeed(int xSpeed) {
-        this.xSpeed = xSpeed;
+        this.speedX = xSpeed;
     }
 
     public int getySpeed() {
-        return ySpeed;
+        return speedY;
     }
 
     public void setySpeed(int ySpeed) {
-        this.ySpeed = ySpeed;
+        this.speedY = ySpeed;
     }
 
     public BallSnapshot getSnapshot() {

@@ -3,8 +3,8 @@ package ru.mail.polis.open.taskfinal;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.List;
-import ru.mail.polis.open.taskfinal.Entities.Ball;
-import ru.mail.polis.open.taskfinal.Entities.Paddle;
+import ru.mail.polis.open.taskfinal.entities.Ball;
+import ru.mail.polis.open.taskfinal.entities.Paddle;
 
 public class ActionProcessor {
     public void updatePaddle(Paddle paddle, List<Integer> userActions) {

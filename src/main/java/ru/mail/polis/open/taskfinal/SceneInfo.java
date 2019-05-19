@@ -1,10 +1,10 @@
 package ru.mail.polis.open.taskfinal;
 
 import java.awt.Point;
-import ru.mail.polis.open.taskfinal.Entities.Ball;
-import ru.mail.polis.open.taskfinal.Entities.BallSnapshot;
-import ru.mail.polis.open.taskfinal.Entities.Paddle;
-import ru.mail.polis.open.taskfinal.Entities.PaddleSnapshot;
+import ru.mail.polis.open.taskfinal.entities.Ball;
+import ru.mail.polis.open.taskfinal.entities.BallSnapshot;
+import ru.mail.polis.open.taskfinal.entities.Paddle;
+import ru.mail.polis.open.taskfinal.entities.PaddleSnapshot;
 
 public class SceneInfo {
     static int WINDOW_WIDTH;
